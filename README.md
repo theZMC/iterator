@@ -1,4 +1,9 @@
 # `iterator`
+[![codecov](https://codecov.io/github/theZMC/iterator/branch/main/graph/badge.svg?token=F3HIWA9OGD)](https://codecov.io/github/theZMC/iterator)
+[![Go Report Card](https://goreportcard.com/badge/github.com/theZMC/iterator)](https://goreportcard.com/report/github.com/theZMC/iterator)
+[![CI](https://github.com/theZMC/iterator/actions/workflows/ci.yml/badge.svg)](https://github.com/theZMC/iterator/actions/workflows/ci.yml)
+[![Go Reference](https://pkg.go.dev/badge/github.com/theZMC/iterator.svg)](https://pkg.go.dev/github.com/theZMC/iterator)
+
 The iterator package provides a simple iterator interface for Go. As go's generics don't allow the use of generic type
 parameters on methods that differ from the types on the receiver, this iterator implementation isn't quite as powerful
 as you might find in other languages. That said, I still think there are many situations where this package can be useful.
