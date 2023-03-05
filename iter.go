@@ -118,25 +118,21 @@ func (it *iter[T]) Unique(opts ...UniqueOption) Of[T] {
 
 func (it *iter[T]) Collect() []T {
 	result := make([]T, 0, len(it.source))
-	mb := new(maybe[T]) // create a single option object to be reused for each iteration, preventing unnecessary allocations
-	for {
-		val, ok := it.Next()
-		if !ok {
-			break
-		}
+	mb := new(maybe[T]) // create a single maybe object to be reused for each iteration, preventing unnecessary allocations
+	it.ForEach(func(val T) {
 		mb.val = val
 		mb.ok = true
 		for _, op := range it.operations {
 			op(mb)
 			if !mb.ok {
-				break // filtered out, skip the rest of the operations
+				break
 			}
 		}
 		if mb.ok {
 			result = append(result, mb.val)
 		}
 		mb.ok = false
-	}
+	})
 	return result
 }
 
